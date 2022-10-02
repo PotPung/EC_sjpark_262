@@ -1,7 +1,7 @@
 --cpu=Cortex-M4.fp.sp
 ".\objects\lab_gpio_dio_led_student.o"
-".\objects\ecrcc_1.o"
-".\objects\ecgpio_1.o"
+".\objects\ecgpio.o"
+".\objects\ecrcc.o"
 ".\objects\startup_stm32f411xe.o"
 ".\objects\system_stm32f4xx.o"
 --strict --scatter ".\Objects\LAB_GPIO_DIO_LED.sct"

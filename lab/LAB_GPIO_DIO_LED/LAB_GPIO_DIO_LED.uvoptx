@@ -189,8 +189,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\LAB_GPIO_DIO_LED_student.c</PathWithFileName>
-      <FilenameWithoutPath>LAB_GPIO_DIO_LED_student.c</FilenameWithoutPath>
+      <PathWithFileName>.\LAB_GPIO_DIO_LED.c</PathWithFileName>
+      <FilenameWithoutPath>LAB_GPIO_DIO_LED.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -209,8 +209,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\EC\lib\ecRCC.c</PathWithFileName>
-      <FilenameWithoutPath>ecRCC.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\lib\ecGPIO.c</PathWithFileName>
+      <FilenameWithoutPath>ecGPIO.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -221,32 +221,32 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\EC\lib\ecRCC.h</PathWithFileName>
-      <FilenameWithoutPath>ecRCC.h</FilenameWithoutPath>
+      <PathWithFileName>..\..\lib\ecGPIO.h</PathWithFileName>
+      <FilenameWithoutPath>ecGPIO.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
       <FileNumber>4</FileNumber>
-      <FileType>1</FileType>
+      <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\EC\lib\ecGPIO.c</PathWithFileName>
-      <FilenameWithoutPath>ecGPIO.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\lib\ecRCC.h</PathWithFileName>
+      <FilenameWithoutPath>ecRCC.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
       <FileNumber>5</FileNumber>
-      <FileType>5</FileType>
+      <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\EC\lib\ecGPIO.h</PathWithFileName>
-      <FilenameWithoutPath>ecGPIO.h</FilenameWithoutPath>
+      <PathWithFileName>..\..\lib\ecRCC.c</PathWithFileName>
+      <FilenameWithoutPath>ecRCC.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -262,7 +262,7 @@
 
   <Group>
     <GroupName>::Device</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>1</RteFlg>
