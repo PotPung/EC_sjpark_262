@@ -65,3 +65,8 @@ int GPIO_read(GPIO_TypeDef *Port, int pin){
 	return 0;    	//[TO-DO] YOUR CODE GOES HERE	
 }
 
+void GPIO_write(GPIO_TypeDef *Port, int pin, int Output){
+		Port->ODR &= ~(0<<(pin));	
+		Port->ODR |=	(Output <<(pin));
+
+}

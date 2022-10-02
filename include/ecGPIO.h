@@ -38,7 +38,6 @@ void GPIO_ospeed(GPIO_TypeDef* Port, int pin, int speed);
 void GPIO_otype(GPIO_TypeDef* Port, int pin, int type);
 void GPIO_pupd(GPIO_TypeDef* Port, int pin, int pupd);
 
-
  
 #ifdef __cplusplus
 }

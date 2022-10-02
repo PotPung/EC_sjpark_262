@@ -134,11 +134,11 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>-1</DriverSelection>
+            <DriverSelection>4096</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -358,7 +358,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath></IncludePath>
+              <IncludePath>..\..\..\EC\lib</IncludePath>
             </VariousControls>
           </Aads>
           <LDads>
@@ -385,9 +385,9 @@
           <GroupName>Source Group 1</GroupName>
           <Files>
             <File>
-              <FileName>LAB_GPIO_DIO_LED_student.c</FileName>
+              <FileName>LAB_7_Segment_Display.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\LAB_GPIO_DIO_LED_student.c</FilePath>
+              <FilePath>.\LAB_7_Segment_Display.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -395,24 +395,24 @@
           <GroupName>HAL</GroupName>
           <Files>
             <File>
-              <FileName>ecRCC.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\EC\lib\ecRCC.c</FilePath>
-            </File>
-            <File>
-              <FileName>ecRCC.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\EC\lib\ecRCC.h</FilePath>
-            </File>
-            <File>
               <FileName>ecGPIO.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\EC\lib\ecGPIO.c</FilePath>
+              <FilePath>..\..\include\ecGPIO.c</FilePath>
             </File>
             <File>
               <FileName>ecGPIO.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\EC\lib\ecGPIO.h</FilePath>
+              <FilePath>..\..\include\ecGPIO.h</FilePath>
+            </File>
+            <File>
+              <FileName>ecRCC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\include\ecRCC.c</FilePath>
+            </File>
+            <File>
+              <FileName>ecRCC.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\include\ecRCC.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -21,36 +21,13 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.9.0
 Dialog DLL:      TCM.DLL V1.56.1.0
  
 <h2>Project:</h2>
-C:\Users\user\source\repos\EC_sjpark_262\lab\LAB_GPIO_DIO_LED\LAB_GPIO_DIO_LED.uvprojx
+C:\Users\user\source\repos\EC_sjpark_262\lab\LAB_7_Segment_Display\LAB_7_Segment_Display.uvprojx
 Project File Date:  09/26/2022
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.18', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'Target 1'
-Note: source file '..\..\..\EC\lib\ecRCC.c' - object file renamed from '.\Objects\ecRCC.o' to '.\Objects\ecrcc_1.o'.
-Note: source file '..\..\..\EC\lib\ecGPIO.c' - object file renamed from '.\Objects\ecGPIO.o' to '.\Objects\ecgpio_1.o'.
-LAB_GPIO_DIO_LED_student.c(20): error: a parameter list without types is only allowed in a function definition
-void bit_Toggle(Port, pin);
-                ^
-LAB_GPIO_DIO_LED_student.c(43): error: expected ';' after expression
-        GPIO_otype(GPIOA, LED_PIN, 0);RCC_GPIOA_enable
-                                                      ^
-                                                      ;
-LAB_GPIO_DIO_LED_student.c(43): warning: expression result unused [-Wunused-value]
-        GPIO_otype(GPIOA, LED_PIN, 0);RCC_GPIOA_enable
-                                      ^~~~~~~~~~~~~~~~
-LAB_GPIO_DIO_LED_student.c(46): warning: parameter 'pin' was not declared, defaulting to type 'int' [-Wpedantic]
-void bit_Toggle(Port, pin){
-                      ^
-LAB_GPIO_DIO_LED_student.c(46): warning: parameter 'Port' was not declared, defaulting to type 'int' [-Wpedantic]
-void bit_Toggle(Port, pin){
-                ^
-LAB_GPIO_DIO_LED_student.c(48): warning: no newline at end of file [-Wnewline-eof]
-}
- ^
-4 warnings and 2 errors generated.
-compiling LAB_GPIO_DIO_LED_student.c...
-".\Objects\LAB_GPIO_DIO_LED.axf" - 2 Error(s), 4 Warning(s).
+".\Objects\LAB_GPIO_DIO_LED.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -76,12 +53,11 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.6.0
 
    * Component: Keil::Device:Startup:2.6.3
-      Include file:  Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
       Source file:   MDK/Device/Source/ARM/STM32F411xx_OPT.s
-      Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/arm/startup_stm32f411xe.s
       Source file:   MDK/Device/Source/ARM/STM32F4xx_OTP.s
+      Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/arm/startup_stm32f411xe.s
+      Include file:  Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
       Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c
-Target not created.
 Build Time Elapsed:  00:00:00
 </pre>
 </body>
