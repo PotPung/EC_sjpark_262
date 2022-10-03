@@ -1,5 +1,5 @@
 --cpu=Cortex-M4.fp.sp
-".\objects\lab_gpio_dio_led_student.o"
+".\objects\lab_gpio_dio_led.o"
 ".\objects\ecgpio.o"
 ".\objects\ecrcc.o"
 ".\objects\startup_stm32f411xe.o"

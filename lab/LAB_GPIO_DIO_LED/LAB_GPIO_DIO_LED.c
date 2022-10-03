@@ -17,7 +17,6 @@
 
 void setup(void);
 
-void LED_Toggle(void);
 
 int main(void) { 
 	// Initialiization --------------------------------------------------------
@@ -45,25 +44,5 @@ void setup(void)
 	GPIO_otype(GPIOA, LED_PIN, EC_OD);
 	GPIO_pupd(GPIOA, LED_PIN, EC_PU);
 	GPIO_ospeed(GPIOA, LED_PIN, EC_MS);
-}
-
-void LED_Toggle(void){
-	if(GPIO_read(GPIOC, BUTTON_PIN) == LOW){
-		if(GPIO_read(GPIOA, LED_PIN) == LOW){
-			GPIO_write(GPIOA, LED_PIN, HIGH);
-		}
-		else{
-			GPIO_write(GPIOA, LED_PIN, LOW);
-		}
-	}
-	else{
-		if(GPIO_read(GPIOA, LED_PIN) == LOW){
-			GPIO_write(GPIOA, LED_PIN, LOW);
-		}
-		else{
-			GPIO_write(GPIOA, LED_PIN, HIGH);
-		}
-	}
-	
 }
 

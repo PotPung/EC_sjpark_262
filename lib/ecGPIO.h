@@ -70,7 +70,8 @@ void GPIO_otype(GPIO_TypeDef* Port, int pin, int type);
 void GPIO_pupd(GPIO_TypeDef* Port, int pin, int pupd);
 void sevensegment_init(void);
 void sevensegment_decode (uint8_t num);
-
+void led_select(int _num);
+void LED_Toggle(void);
  
 #ifdef __cplusplus
 }

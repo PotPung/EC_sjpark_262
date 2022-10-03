@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\LAB_GPIO_DIO_LED.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\LAB_GPIO_DIO_LED.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6180002: Last Updated: Sun Oct  2 22:14:01 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6180002: Last Updated: Sun Oct  2 23:34:55 2022
 <BR><P>
 <H3>Maximum Stack Usage =         84 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -580,7 +580,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Toggle
 </UL>
 
-<P><STRONG><a name="[5e]"></a>LED_Toggle</STRONG> (Thumb, 122 bytes, Stack size 8 bytes, lab_gpio_dio_led_student.o(.text.LED_Toggle))
+<P><STRONG><a name="[5e]"></a>LED_Toggle</STRONG> (Thumb, 122 bytes, Stack size 8 bytes, lab_gpio_dio_led.o(.text.LED_Toggle))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = LED_Toggle &rArr; GPIO_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_write
@@ -623,7 +623,7 @@ Global Symbols
 <P><STRONG><a name="[43]"></a>SystemInit</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, system_stm32f4xx.o(.text.SystemInit))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f411xe.o(.text)
 </UL>
-<P><STRONG><a name="[50]"></a>main</STRONG> (Thumb, 52 bytes, Stack size 16 bytes, lab_gpio_dio_led_student.o(.text.main))
+<P><STRONG><a name="[50]"></a>main</STRONG> (Thumb, 52 bytes, Stack size 16 bytes, lab_gpio_dio_led.o(.text.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = main &rArr; setup &rArr; GPIO_init &rArr; GPIO_mode
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Toggle
@@ -632,7 +632,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[62]"></a>setup</STRONG> (Thumb, 92 bytes, Stack size 32 bytes, lab_gpio_dio_led_student.o(.text.setup))
+<P><STRONG><a name="[62]"></a>setup</STRONG> (Thumb, 92 bytes, Stack size 32 bytes, lab_gpio_dio_led.o(.text.setup))
 <BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = setup &rArr; GPIO_init &rArr; GPIO_mode
 </UL>
 <BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ospeed

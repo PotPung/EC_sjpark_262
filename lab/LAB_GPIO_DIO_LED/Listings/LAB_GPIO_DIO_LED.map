@@ -4,18 +4,18 @@ Component: Arm Compiler for Embedded 6.18 Tool: armlink [5e4cc100]
 
 Section Cross References
 
-    lab_gpio_dio_led_student.o(.text.main) refers to lab_gpio_dio_led_student.o(.text.setup) for setup
-    lab_gpio_dio_led_student.o(.text.main) refers to lab_gpio_dio_led_student.o(.text.LED_Toggle) for LED_Toggle
-    lab_gpio_dio_led_student.o(.ARM.exidx.text.main) refers to lab_gpio_dio_led_student.o(.text.main) for [Anonymous Symbol]
-    lab_gpio_dio_led_student.o(.text.setup) refers to ecrcc.o(.text.RCC_HSI_init) for RCC_HSI_init
-    lab_gpio_dio_led_student.o(.text.setup) refers to ecgpio.o(.text.GPIO_init) for GPIO_init
-    lab_gpio_dio_led_student.o(.text.setup) refers to ecgpio.o(.text.GPIO_pupd) for GPIO_pupd
-    lab_gpio_dio_led_student.o(.text.setup) refers to ecgpio.o(.text.GPIO_otype) for GPIO_otype
-    lab_gpio_dio_led_student.o(.text.setup) refers to ecgpio.o(.text.GPIO_ospeed) for GPIO_ospeed
-    lab_gpio_dio_led_student.o(.ARM.exidx.text.setup) refers to lab_gpio_dio_led_student.o(.text.setup) for [Anonymous Symbol]
-    lab_gpio_dio_led_student.o(.text.LED_Toggle) refers to ecgpio.o(.text.GPIO_read) for GPIO_read
-    lab_gpio_dio_led_student.o(.text.LED_Toggle) refers to ecgpio.o(.text.GPIO_write) for GPIO_write
-    lab_gpio_dio_led_student.o(.ARM.exidx.text.LED_Toggle) refers to lab_gpio_dio_led_student.o(.text.LED_Toggle) for [Anonymous Symbol]
+    lab_gpio_dio_led.o(.text.main) refers to lab_gpio_dio_led.o(.text.setup) for setup
+    lab_gpio_dio_led.o(.text.main) refers to lab_gpio_dio_led.o(.text.LED_Toggle) for LED_Toggle
+    lab_gpio_dio_led.o(.ARM.exidx.text.main) refers to lab_gpio_dio_led.o(.text.main) for [Anonymous Symbol]
+    lab_gpio_dio_led.o(.text.setup) refers to ecrcc.o(.text.RCC_HSI_init) for RCC_HSI_init
+    lab_gpio_dio_led.o(.text.setup) refers to ecgpio.o(.text.GPIO_init) for GPIO_init
+    lab_gpio_dio_led.o(.text.setup) refers to ecgpio.o(.text.GPIO_pupd) for GPIO_pupd
+    lab_gpio_dio_led.o(.text.setup) refers to ecgpio.o(.text.GPIO_otype) for GPIO_otype
+    lab_gpio_dio_led.o(.text.setup) refers to ecgpio.o(.text.GPIO_ospeed) for GPIO_ospeed
+    lab_gpio_dio_led.o(.ARM.exidx.text.setup) refers to lab_gpio_dio_led.o(.text.setup) for [Anonymous Symbol]
+    lab_gpio_dio_led.o(.text.LED_Toggle) refers to ecgpio.o(.text.GPIO_read) for GPIO_read
+    lab_gpio_dio_led.o(.text.LED_Toggle) refers to ecgpio.o(.text.GPIO_write) for GPIO_write
+    lab_gpio_dio_led.o(.ARM.exidx.text.LED_Toggle) refers to lab_gpio_dio_led.o(.text.LED_Toggle) for [Anonymous Symbol]
     ecgpio.o(.text.GPIO_init) refers to ecrcc.o(.text.RCC_GPIOA_enable) for RCC_GPIOA_enable
     ecgpio.o(.text.GPIO_init) refers to ecrcc.o(.text.RCC_GPIOB_enable) for RCC_GPIOB_enable
     ecgpio.o(.text.GPIO_init) refers to ecrcc.o(.text.RCC_GPIOC_enable) for RCC_GPIOC_enable
@@ -70,7 +70,7 @@ Section Cross References
     __rtentry2.o(.ARM.Collect$$rtentry$$00000008) refers to boardinit2.o(.text) for _platform_post_stackheap_init
     __rtentry2.o(.ARM.Collect$$rtentry$$0000000A) refers to libinit.o(.ARM.Collect$$libinit$$00000000) for __rt_lib_init
     __rtentry2.o(.ARM.Collect$$rtentry$$0000000B) refers to boardinit3.o(.text) for _platform_post_lib_init
-    __rtentry2.o(.ARM.Collect$$rtentry$$0000000D) refers to lab_gpio_dio_led_student.o(.text.main) for main
+    __rtentry2.o(.ARM.Collect$$rtentry$$0000000D) refers to lab_gpio_dio_led.o(.text.main) for main
     __rtentry2.o(.ARM.Collect$$rtentry$$0000000D) refers to exit.o(.text) for exit
     __rtentry2.o(.ARM.exidx) refers to __rtentry2.o(.ARM.Collect$$rtentry$$00000001) for .ARM.Collect$$rtentry$$00000001
     __rtentry2.o(.ARM.exidx) refers to __rtentry2.o(.ARM.Collect$$rtentry$$00000008) for .ARM.Collect$$rtentry$$00000008
@@ -172,11 +172,11 @@ Section Cross References
 
 Removing Unused input sections from the image.
 
-    Removing lab_gpio_dio_led_student.o(.text), (0 bytes).
-    Removing lab_gpio_dio_led_student.o(.ARM.exidx.text.main), (8 bytes).
-    Removing lab_gpio_dio_led_student.o(.ARM.exidx.text.setup), (8 bytes).
-    Removing lab_gpio_dio_led_student.o(.ARM.exidx.text.LED_Toggle), (8 bytes).
-    Removing lab_gpio_dio_led_student.o(.ARM.use_no_argv), (4 bytes).
+    Removing lab_gpio_dio_led.o(.text), (0 bytes).
+    Removing lab_gpio_dio_led.o(.ARM.exidx.text.main), (8 bytes).
+    Removing lab_gpio_dio_led.o(.ARM.exidx.text.setup), (8 bytes).
+    Removing lab_gpio_dio_led.o(.ARM.exidx.text.LED_Toggle), (8 bytes).
+    Removing lab_gpio_dio_led.o(.ARM.use_no_argv), (4 bytes).
     Removing ecgpio.o(.text), (0 bytes).
     Removing ecgpio.o(.ARM.exidx.text.GPIO_init), (8 bytes).
     Removing ecgpio.o(.ARM.exidx.text.GPIO_mode), (8 bytes).
@@ -267,7 +267,7 @@ Image Symbol Table
     ../clib/signal.s                         0x00000000   Number         0  defsig.o ABSOLUTE
     ../clib/stdlib.c                         0x00000000   Number         0  exit.o ABSOLUTE
     ../fplib/fpinit.s                        0x00000000   Number         0  fpinit.o ABSOLUTE
-    LAB_GPIO_DIO_LED_student.c               0x00000000   Number         0  lab_gpio_dio_led_student.o ABSOLUTE
+    LAB_GPIO_DIO_LED.c                       0x00000000   Number         0  lab_gpio_dio_led.o ABSOLUTE
     RTE/Device/STM32F411RETx/startup_stm32f411xe.s 0x00000000   Number         0  startup_stm32f411xe.o ABSOLUTE
     dc.s                                     0x00000000   Number         0  dc.o ABSOLUTE
     ecGPIO.c                                 0x00000000   Number         0  ecgpio.o ABSOLUTE
@@ -336,14 +336,14 @@ Image Symbol Table
     [Anonymous Symbol]                       0x080003c8   Section        0  ecgpio.o(.text.GPIO_pupd)
     [Anonymous Symbol]                       0x080003f8   Section        0  ecgpio.o(.text.GPIO_read)
     [Anonymous Symbol]                       0x08000414   Section        0  ecgpio.o(.text.GPIO_write)
-    [Anonymous Symbol]                       0x08000440   Section        0  lab_gpio_dio_led_student.o(.text.LED_Toggle)
+    [Anonymous Symbol]                       0x08000440   Section        0  lab_gpio_dio_led.o(.text.LED_Toggle)
     [Anonymous Symbol]                       0x080004bc   Section        0  ecrcc.o(.text.RCC_GPIOA_enable)
     [Anonymous Symbol]                       0x080004d4   Section        0  ecrcc.o(.text.RCC_GPIOB_enable)
     [Anonymous Symbol]                       0x080004ec   Section        0  ecrcc.o(.text.RCC_GPIOC_enable)
     [Anonymous Symbol]                       0x08000504   Section        0  ecrcc.o(.text.RCC_HSI_init)
     [Anonymous Symbol]                       0x08000568   Section        0  system_stm32f4xx.o(.text.SystemInit)
-    [Anonymous Symbol]                       0x0800057c   Section        0  lab_gpio_dio_led_student.o(.text.main)
-    [Anonymous Symbol]                       0x080005b0   Section        0  lab_gpio_dio_led_student.o(.text.setup)
+    [Anonymous Symbol]                       0x0800057c   Section        0  lab_gpio_dio_led.o(.text.main)
+    [Anonymous Symbol]                       0x080005b0   Section        0  lab_gpio_dio_led.o(.text.setup)
     $v0                                      0x0800060c   Number         0  fpinit.o(x$fpl$fpinit)
     x$fpl$fpinit                             0x0800060c   Section       26  fpinit.o(x$fpl$fpinit)
     .bss                                     0x20000008   Section       96  libspace.o(.bss)
@@ -526,14 +526,14 @@ Image Symbol Table
     GPIO_pupd                                0x080003c9   Thumb Code    48  ecgpio.o(.text.GPIO_pupd)
     GPIO_read                                0x080003f9   Thumb Code    26  ecgpio.o(.text.GPIO_read)
     GPIO_write                               0x08000415   Thumb Code    44  ecgpio.o(.text.GPIO_write)
-    LED_Toggle                               0x08000441   Thumb Code   122  lab_gpio_dio_led_student.o(.text.LED_Toggle)
+    LED_Toggle                               0x08000441   Thumb Code   122  lab_gpio_dio_led.o(.text.LED_Toggle)
     RCC_GPIOA_enable                         0x080004bd   Thumb Code    24  ecrcc.o(.text.RCC_GPIOA_enable)
     RCC_GPIOB_enable                         0x080004d5   Thumb Code    24  ecrcc.o(.text.RCC_GPIOB_enable)
     RCC_GPIOC_enable                         0x080004ed   Thumb Code    24  ecrcc.o(.text.RCC_GPIOC_enable)
     RCC_HSI_init                             0x08000505   Thumb Code   100  ecrcc.o(.text.RCC_HSI_init)
     SystemInit                               0x08000569   Thumb Code    18  system_stm32f4xx.o(.text.SystemInit)
-    main                                     0x0800057d   Thumb Code    52  lab_gpio_dio_led_student.o(.text.main)
-    setup                                    0x080005b1   Thumb Code    92  lab_gpio_dio_led_student.o(.text.setup)
+    main                                     0x0800057d   Thumb Code    52  lab_gpio_dio_led.o(.text.main)
+    setup                                    0x080005b1   Thumb Code    92  lab_gpio_dio_led.o(.text.setup)
     _fp_init                                 0x0800060d   Thumb Code    26  fpinit.o(x$fpl$fpinit)
     __fplib_config_fpu_vfp                   0x08000625   Thumb Code     0  fpinit.o(x$fpl$fpinit)
     __fplib_config_pureend_doubles           0x08000625   Thumb Code     0  fpinit.o(x$fpl$fpinit)
@@ -624,7 +624,7 @@ Memory Map of the image
     0x080003f8   0x080003f8   0x0000001a   Code   RO           26    .text.GPIO_read     ecgpio.o
     0x08000412   0x08000412   0x00000002   PAD
     0x08000414   0x08000414   0x0000002c   Code   RO           28    .text.GPIO_write    ecgpio.o
-    0x08000440   0x08000440   0x0000007a   Code   RO            6    .text.LED_Toggle    lab_gpio_dio_led_student.o
+    0x08000440   0x08000440   0x0000007a   Code   RO            6    .text.LED_Toggle    lab_gpio_dio_led.o
     0x080004ba   0x080004ba   0x00000002   PAD
     0x080004bc   0x080004bc   0x00000018   Code   RO           46    .text.RCC_GPIOA_enable  ecrcc.o
     0x080004d4   0x080004d4   0x00000018   Code   RO           48    .text.RCC_GPIOB_enable  ecrcc.o
@@ -632,8 +632,8 @@ Memory Map of the image
     0x08000504   0x08000504   0x00000064   Code   RO           42    .text.RCC_HSI_init  ecrcc.o
     0x08000568   0x08000568   0x00000012   Code   RO           69    .text.SystemInit    system_stm32f4xx.o
     0x0800057a   0x0800057a   0x00000002   PAD
-    0x0800057c   0x0800057c   0x00000034   Code   RO            2    .text.main          lab_gpio_dio_led_student.o
-    0x080005b0   0x080005b0   0x0000005c   Code   RO            4    .text.setup         lab_gpio_dio_led_student.o
+    0x0800057c   0x0800057c   0x00000034   Code   RO            2    .text.main          lab_gpio_dio_led.o
+    0x080005b0   0x080005b0   0x0000005c   Code   RO            4    .text.setup         lab_gpio_dio_led.o
     0x0800060c   0x0800060c   0x0000001a   Code   RO          177    x$fpl$fpinit        fz_wm.l(fpinit.o)
     0x08000626   0x08000626   0x00000002   PAD
     0x08000628   0x08000628   0x00000020   Data   RO          252    Region$$Table       anon$$obj.o
@@ -657,14 +657,14 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       330          0          0          0          0       2471   ecgpio.o
+       330          0          0          0          0       2482   ecgpio.o
        172          0          0          4          0       2230   ecrcc.o
-       266          0          0          0          0       1333   lab_gpio_dio_led_student.o
+       266          0          0          0          0       1328   lab_gpio_dio_led.o
         64         26        408          0       1536        896   startup_stm32f411xe.o
         18          0          0          0          0       2708   system_stm32f4xx.o
 
     ----------------------------------------------------------------------
-       856         26        440          4       1540       9638   Object Totals
+       856         26        440          4       1540       9644   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          6          0          0          0          4          0   (incl. Padding)
 
@@ -715,8 +715,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      1168         42        440          4       1636      10122   Grand Totals
-      1168         42        440          4       1636      10122   ELF Image Totals
+      1168         42        440          4       1636      10128   Grand Totals
+      1168         42        440          4       1636      10128   ELF Image Totals
       1168         42        440          4          0          0   ROM Totals
 
 ==============================================================================

@@ -1,6 +1,10 @@
-//========================================================
-//
-//========================================================
+/*----------------------------------------------------------------\
+@ Embedded Controller by Young-Keun Kim - Handong Global University
+Author           : Seongjun Park
+Language/ver     : C++ in Keil uVision
+Description      : Distributed to Students for LAB_GPIO
+/----------------------------------------------------------------*/
+
 #ifndef __EC_RCC_H
 #define __EC_RCC_H
 

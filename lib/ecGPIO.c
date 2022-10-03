@@ -13,6 +13,11 @@ Description      : Distributed to Students for LAB_GPIO
 #include "stm32f4xx.h"
 #include "stm32f411xe.h"
 #include "ecGPIO.h"
+#define LED_PIN_0 5 //PA5
+#define LED_PIN_1	6 //PA6
+#define LED_PIN_2 7 //PA7
+#define LED_PIN_3	6	//PB6
+int ledPin[4][4] ={{1,0,0,0},{0,1,0,0},{0,0,1,0},{0,0,0,1}};
 
 void GPIO_init(GPIO_TypeDef *Port, int pin, int mode){     
 	// mode  : Input(0), Output(1), AlterFunc(2), Analog(3)   
@@ -129,4 +134,31 @@ void sevensegment_decode (uint8_t num){
 	GPIO_write(GPIOA, 5, number[num][4]); //e
 	GPIO_write(GPIOA, 9, number[num][5]); //f
 	GPIO_write(GPIOC, 7, number[num][6]); //g
+}
+
+void led_select(int _num){
+	GPIO_write(GPIOA, LED_PIN_0, ledPin[_num][0]);
+	GPIO_write(GPIOA, LED_PIN_1, ledPin[_num][1]);
+	GPIO_write(GPIOA, LED_PIN_2, ledPin[_num][2]);
+	GPIO_write(GPIOB, LED_PIN_3, ledPin[_num][3]);
+}
+
+void LED_Toggle(void){
+	if(GPIO_read(GPIOC, BUTTON_PIN) == LOW){
+		if(GPIO_read(GPIOA, LED_PIN) == LOW){
+			GPIO_write(GPIOA, LED_PIN, HIGH);
+		}
+		else{
+			GPIO_write(GPIOA, LED_PIN, LOW);
+		}
+	}
+	else{
+		if(GPIO_read(GPIOA, LED_PIN) == LOW){
+			GPIO_write(GPIOA, LED_PIN, LOW);
+		}
+		else{
+			GPIO_write(GPIOA, LED_PIN, HIGH);
+		}
+	}
+	
 }
