@@ -27,6 +27,10 @@ void GPIO_init(GPIO_TypeDef *Port, int pin, int mode){
 		RCC_GPIOB_enable();
 	if (Port == GPIOC)
 		RCC_GPIOC_enable();
+	if (Port == GPIOD)
+		RCC_GPIOB_enable();
+	if (Port == GPIOE)
+		RCC_GPIOC_enable();
 	
 	//[TO-DO] YOUR CODE GOES HERE
 	// Make it for GPIOB, GPIOD..GPIOH
