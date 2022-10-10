@@ -8,11 +8,13 @@
 
 **Author/Partner: **Seongjun Park/ Dongmin Kim****
 
-**Github:** 
+**Github:** https://github.com/PotPung/EC_sjpark_262/tree/main/docs/LAB_GPIO_7segment_21600262_%EB%B0%95%EC%84%B1%EC%A4%80
 
 **Demo Video:** https://youtu.be/zCFLeOTo1D0
 
-**PDF version:**
+**PDF version:** 1.7(Acrobat 8.x)
+
+
 
 # Introduction
 
