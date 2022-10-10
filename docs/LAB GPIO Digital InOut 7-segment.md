@@ -1,306 +1,264 @@
+
+
 # LAB: GPIO Digital InOut 7-segment
 
 
 
-**Date:** 2022-09-26
+**Date:** 2022-10-10
 
-**Author/Partner:**
+**Author/Partner: **Seongjun Park/ Dongmin Kim****
 
-**Github:** repository link
+**Github:** 
 
-**Demo Video:** Youtube link
+**Demo Video:** https://youtu.be/zCFLeOTo1D0
 
 **PDF version:**
 
 # Introduction
 
-In this lab, you are required to create a simple program to control a 7-segment display to show a decimal number (0~9) that increases by pressing a push-button.
+ In this lab, I create a program that controls the 7-segment. Each time the button is pressed, the 7-segment display increases by 1 from 0 to 9. If the button is pressed when it becomes 9, reset it to 0. Through this, it is possible to understand the hardware principle that the lead of the 7-segment operates and the connection method of the 7-segment.
 
-You must submit
 
-- LAB Report (*.md & *.pdf)
-- Zip source files(main*.c, ecRCC.h, ecGPIO.h etc...).
-  - Only the source files. Do not submit project files
 
-## Requirement
+# Requirement
 
 ### Hardware
 
-- 
+- MCU
 
-  MCU
+  - NUCLEO-F401RE
 
-  - 
+- Actuator/Sensor/Others:
 
-    NUCLEO-F401RE
+  - 7-segment display(5101ASR)
 
-- 
+  - Array resistor (330 ohm)
 
-  Actuator/Sensor/Others:
-
-  - 
-
-    7-segment display(5101ASR)
-
-  - 
-
-    Array resistor (330 ohm)
-
-  - 
-
-    breadboard
+  - breadboard
 
 ### Software
 
-- 
+- Keil uVision, CMSIS, EC_HAL library
 
-  Keil uVision, CMSIS, EC_HAL library
+
 
 # Problem 1: Connecting 7-Segment
 
 ## Procedure
 
-Review 7-segment Decoder and Display from Digital Logic lecture.
+  Instead of using the decoder chip, we are going to make the 7-segment decoder with the MCU programming.
 
-- 
+![image](https://user-images.githubusercontent.com/114110842/194765031-0999095c-97e6-4a1f-a724-ff998ac47d9f.png)
 
-  Read here: [7-segment BCD tutorial](https://www.electronics-tutorials.ws/combination/comb_6.html)
+​														**Figure 1. 7-segment connection**
 
-The popular BCD 7-segment decoder chips are **74LS47 and CD4511**.
+1. Connect the common anode 7-segment with the given array resistors.
 
-Instead of using the decoder chip, we are going to make the 7-segment decoder with the MCU programming.
+2. Apply VCC and GND to the 7-segment display.
 
-![img](https://user-images.githubusercontent.com/38373000/192133325-a4844100-ab1c-445b-8832-837c8f988f35.png)
+3. Apply 'H' to any 7-segment pin 'a'~'g' and observe if that LED is turned on or off
 
-image
 
-Connect the common anode 7-segment with the given array resistors.
 
-Apply VCC and GND to the 7-segment display.
+# Connection Diagram
 
-Apply 'H' to any 7-segment pin 'a'~'g' and observe if that LED is turned on or off
+7segment Circuit diagram
 
-- 
+![image](https://user-images.githubusercontent.com/114110842/194712994-2f1a4883-64a9-4f9f-9e18-422c19aad83b.png)
 
-  example: Set 'H' on PA5 of MCU and connect to 'a' of the 7-segment.
+​												**Figure 2. 7-segment Circuit diagram**
 
-## Connection Diagram
+# Discussion
 
-Circuit diagram
+1. Draw the truth table for the BCD 7-segment decoder with the 4-bit input.
 
-> You need to include the circuit diagram
+   ![image](https://user-images.githubusercontent.com/114110842/194785348-3036a1ee-e6c9-457f-8e73-009f28c7cda9.png)
 
-![img](https://user-images.githubusercontent.com/38373000/192134563-72f68b29-4127-42ac-b064-2eda95a9a52a.png)
+   ​							**Figure 3. Truth table for BCD 7-segment with 4-bit input**
 
-image
+   This table shows the common-cathode type in Figure 1, and h means Dp.
 
-## Discussion
+2. What are the common cathode and common anode of 7-segment display?
 
-1. 1.
+![image](https://user-images.githubusercontent.com/114110842/194764608-44faaa29-b8f4-47b1-a0c1-2eb608a15299.png)
 
-   Draw the truth table for the BCD 7-segment decoder with the 4-bit input.
+​									**Figure 4. Common Cathode & Common Anode**
 
-> Answer discussion questions
+​	In the Common Cathode, all cathodes are commonly connected to the ground like the left picture in Figure 4, and in the Common Anode, all anodes are commonly connected to + poles like the right picture in Figure 4. In other words, since the voltage difference occurs only when the input of the common cathode is "H", the LED is turned on, and the voltage difference occurs only when the input of the common cathode is "L", so the LED is turned on.
 
-** YOUR Truth-table  goes here**
+3. Does the LED of a 7-segment display (common anode) pin turn ON when 'HIGH' is given to the LED pin from the MCU? 
 
-1. 1.
+   ​	Based on the answer No. 2, when 'HIGH' is given as the MCU's LED pin, the LED of the 7-segment display (common anode) pin is turned off.
 
-   What are the common cathode and common anode of 7-segment display?
-
-> Answer discussion questions
-
-1. 1.
-
-   Does the LED of a 7-segment display (common anode) pin turn ON when 'HIGH' is given to the LED pin from the MCU?
-
-> Answer discussion questions
+   
 
 # Problem 2: Display 0~9 with button press
 
 ## Procedure
 
-1. 1.
+1. setup - configuration initialization
 
-   Create a new project under the directory `\repos\EC\LAB\LAB_GPIO_7segment`
+2. 7-segment decode function
 
-- 
+   - The values of 0[LOW-LED ON],1[HIGH-LED OFF] for each led(a~h) are expressed using a 2D array according to each display of numbers 0 to 9.
+   - When the button is pressed, it counts, and select the display array that matches the counted number.
 
-  The project name is “**LAB_GPIO_7segment”.**
+3. Debounce through delay.
 
-- 
+   ![image](https://user-images.githubusercontent.com/114110842/194786379-2c033324-c350-4de3-b4a9-388bd8ad84f6.png)
 
-  Create a new source file named as “**LAB_GPIO_7segment.c”**
+   ​												**Figure 5. Flow chart for 7-segment**
 
-- 
+# Configuration
 
-  Refer to the [sample code](https://github.com/ykkimhgu/course-doc/blob/master/course/lab/code/README.md)
+| Digital In for Button (B1) | Digital Out for 7-Segment                                    |
+| -------------------------- | ------------------------------------------------------------ |
+| Digital In                 | Digital Out                                                  |
+| PC13                       | PA5, PA6, PA7, PB6, PC7, PA9, PA8, PB10 ('a'~'h', respectively) |
+| PULL-UP                    | Push-Pull, No Pull-up-Pull-down, Medium Speed                |
 
-> You MUST write your name on the source file inside the comment section.
 
-\2. Include your updated library in `\repos\EC\lib\` to your project.
 
-- 
-
-  **ecGPIO.h, ecGPIO.c**
-
-- 
-
-  **ecRCC.h, ecRCC.c**
-
-1. 1.
-
-   Declare and Define the following functions in your library
-
-   - 
-
-     You can refer to [an example code of 7-segment control](https://os.mbed.com/users/ShingyoujiPai/code/7SegmentDisplay/file/463ff11d33fa/main.cpp/)
-
-   **ecGPIO.h**
-
-void sevensegment_init(void); 
-
-void sevensegment_decoder(uint8  num);
-
-1. 1.
-
-   First, check if every number, 0 to 9, can be displayed properly
-
-2. 2.
-
-   Then, create a code to display the number from 0 to 9 with each button press. After the number '9', it should start from '0' again.
-
-## Configuration
-
-Digital In for Button (B1)
-
-Digital Out for 7-Segment
-
-Digital In
-
-Digital Out
-
-PC13
-
-PA5, PA6, PA7, PB6, PC7, PA9, PA8, PB10 ('a'~'h', respectively)
-
-PULL-UP
-
-Push-Pull, No Pull-up-Pull-down, Medium Speed
-
-## Exercise
+# Exercise
 
 Fill in the table
 
-| Port/Pin       | Description                  | Register setting            |
-| -------------- | ---------------------------- | --------------------------- |
-| Port A Pin 5   | Clear Pin5 mode              | GPIOA->MODER &=~(3<<(5*2))  |
-| Port A Pin 5   | Set Pin5 mode = Output       | GPIOA->MODER \|= (1<<(5*2)) |
-| Port A Pin 6   | Clear Pin6 mode              | GPIOA->MODER &=~(3<<(6*2))  |
-| Port A Pin 6   | Set Pin6 mode = Output       | GPIOA->MODER \|= (1<<(6*2)) |
-| Port A Pin Y   | Clear PinY mode              | GPIOA->MODER &=~            |
-| Port A Pin Y   | Set PinY mode = Output       | GPIOA->MODER \|=            |
-| Port A Pin 5~9 | Clear Pin5~9 mode            | GPIOA->MODER &=~            |
-|                | Set Pin5~9 mode = Output     | GPIOA->MODER \|=            |
-| Port X Pin Y   | Clear Pin Y mode             | GPIOX->MODER &=~            |
-|                | Set Pin Y mode = Output      | GPIOX->MODER \|=            |
-| Port A Pin 6   | Set Pin5 otype=push-pull     | GPIOA->OTYPER =             |
-| Port A Pin Y   | Set PinY otype=push-pull     | GPIOA-> OTYPER =            |
-| Port A Pin 5   | Set Pin5 ospeed=Fast         | GPIOA->OSPEEDR =            |
-| Port A Pin Y   | Set PinY ospeed=Fast         | GPIOA-> OSPEEDR =           |
-| Port A Pin 5   | Set Pin5 PUPD=no pullup/down | GPIOA->OTYPER =             |
-| Port A Pin Y   | Set PinY PUPD=no pullup/down | GPIOA-> OTYPER =            |
+| Port/Pin       | Description                  | Register setting                |
+| -------------- | ---------------------------- | ------------------------------- |
+| Port A Pin 5   | Clear Pin5 mode              | GPIOA->MODER &= ~(3<<(5*2))     |
+| Port A Pin 5   | Set Pin5 mode = Output       | GPIOA->MODER \|= (1<<(5*2))     |
+| Port A Pin 6   | Clear Pin6 mode              | GPIOA->MODER &= ~(3<<(6*2))     |
+| Port A Pin 6   | Set Pin6 mode = Output       | GPIOA->MODER \|= (1<<(6*2))     |
+| Port A Pin Y   | Clear PinY mode              | GPIOA->MODER & = ~(3<<(Y*2))    |
+| Port A Pin Y   | Set PinY mode = Output       | GPIOA->MODER \|= 1<<(2*Y)       |
+| Port A Pin 5~9 | Clear Pin5~9 mode            | GPIOA->MODER &= ~(0x3FF<<(2*5)) |
+|                | Set Pin5~9 mode = Output     | GPIOA->MODER \|= 0x155<<(2*5)   |
+| Port X Pin Y   | Clear Pin Y mode             | GPIOX->MODER &= ~(3<<(Y*2))     |
+|                | Set Pin Y mode = Output      | GPIOX->MODER \|= 1<<(2*Y)       |
+| Port A Pin 5   | Set Pin5 otype=push-pull     | GPIOA->OTYPER = 0<<5            |
+| Port A Pin Y   | Set PinY otype=push-pull     | GPIOA-> OTYPER = 0<<Y           |
+| Port A Pin 5   | Set Pin5 ospeed=Fast         | GPIOA->OSPEEDR = 2<<(2*5)       |
+| Port A Pin Y   | Set PinY ospeed=Fast         | GPIOA-> OSPEEDR = 2<<(2*Y)      |
+| Port A Pin 5   | Set Pin5 PUPD=no pullup/down | GPIOA->PUPDR = 0<<(2*5)         |
+| Port A Pin Y   | Set PinY PUPD=no pullup/down | GPIOA->PUPDR = 0<<(2*Y)         |
 
 
 
-## Code
+# Code
 
-[**Sample Code**](https://ykkim.gitbook.io/ec/stm32-m4-programming/example-code#seven-segment).
+- **Lab source code**: 
+- **Main code** - LAB_GPIO_7segment.c
 
-\#include "stm32f4xx.h"
-
-\#include "ecGPIO.h"
-
-\#include "ecRCC.h"
-
-
-
-\#define LED_PIN 	5
-
-\#define BUTTON_PIN 13
-
-
-
-void setup(void);
-
-​	
-
+```c
 int main(void) { 
-
-​	// Initialiization --------------------------------------------------------
-
-​	setup();
-
-​	unsigned int cnt = 0;
-
-​	
-
-​	// Inifinite Loop ----------------------------------------------------------
-
-​	while(1){
-
-​		sevensegment_decode(cnt % 10);
-
-​		if(GPIO_read(GPIOC, BUTTON_PIN) == 0) cnt++; 
-
-​		if (cnt > 9) cnt = 0;
-
-​		for(int i = 0; i < 500000;i++){}
-
-​	}
-
+	// Initialiization --------------------------------------------------------
+	setup();
+	unsigned int cnt = 0; //count
+	
+	// Inifinite Loop ----------------------------------------------------------
+	while(1){
+		sevensegment_decode(cnt % 10); 
+		if(GPIO_read(GPIOC, BUTTON_PIN) == 0) cnt++; // count by pushing button
+		if (cnt > 9) cnt = 0; // count initialization
+		for(int i = 0; i < 300000;i++){} //debouncing
+	}
 }
+```
 
+- **Setup/initialization code** - LAB_GPIO_7segment.c
 
-
-
-
-// Initialiization 
-
+```c
 void setup(void)
-
 {
-
-​	RCC_HSI_init();	
-
-​	GPIO_init(GPIOC, BUTTON_PIN, INPUT);  // calls RCC_GPIOC_enable()
-
-​	sevensegment_init();
-
+	RCC_HSI_init();
+	// Dgital In for Button(B1)
+	GPIO_init(GPIOC, BUTTON_PIN, INPUT); // calls RCC_GPIOC_enable()
+	GPIO_pupd(GPIOC, BUTTON_PIN, EC_PD); // Button pin -> pull down
+	
+	// Dgital Out for 7-Segment
+	sevensegment_init();
 }
+```
 
-Your code goes here: [ADD Code LINK such as github](https://github.com/ykkimhgu/EC-student/)
+- **Sevensegment initialization(configuration) code** - ecGPIO.c
 
-Explain your source code with necessary comments.
+```c
+void sevensegment_init(void){
+	for (int i = PIN_5; i< PIN_11 ; i++){ // led a, b, c, d, e, f
+		int gpioType = 0;
+		if (i == PIN_10){
+			gpioType = GPIOB;
+		}
+		else{
+			gpioType = GPIOA;
+		}
+	GPIO_init(gpioType, i, OUTPUT); 
+	GPIO_otype(gpioType, i, EC_PP); // Push-Pull
+	GPIO_pupd(gpioType, i, EC_NON); // NO Pull-up-Pull-down
+	GPIO_ospeed(gpioType, i, EC_MS); // Medium speed
+	}
+	
+	GPIO_init(GPIOC, PIN_7, OUTPUT); //led g
+	GPIO_otype(GPIOC, PIN_7, EC_PP); //Push-Pull
+	GPIO_pupd(GPIOC, PIN_7, EC_NON); // NO Pull-up-Pull-down
+	GPIO_ospeed(GPIOC, PIN_7, EC_MS); // Medium speed
+	
+	GPIO_init(GPIOB, PIN_6, OUTPUT); // led h
+	GPIO_otype(GPIOB, PIN_6, EC_PP); //Push-Pull
+	GPIO_pupd(GPIOB, PIN_6, EC_NON); // NO Pull-up-Pull-down
+	GPIO_ospeed(GPIOB, PIN_6, EC_MS); // Medium speed
+}
+```
 
-// YOUR MAIN CODE ONLY
+- **2D array for 7-segment & sevensegment decode code** - ecGPIO.c
 
-// YOUR CODE
+```c
+int number[10][8]={                  	       //{a,b,c,d,e,f,g,h}
+                   {0,0,0,0,0,0,1,1},          //zero '0'
+                   {1,0,0,1,1,1,1,1},          //one '1'
+                   {0,0,1,0,0,1,0,1},          //two '2'
+                   {0,0,0,0,1,1,0,1},          //three '3'
+                   {1,0,0,1,1,0,0,1},          //four '4'
+                   {0,1,0,0,1,0,0,1},          //five '5'
+                   {0,1,0,0,0,0,0,1},          //six '6'
+                   {0,0,0,1,1,0,1,1},          //seven '7'
+                   {0,0,0,0,0,0,0,1},          //eight '8'
+                   {0,0,0,0,1,0,0,1},          //nine '9'
+                 };
+                  
+void sevensegment_decode (uint8_t num){
+	// LEDs for each of the 7-segment
+	GPIO_write(GPIOA, 8, number[num][0]); //led a
+	GPIO_write(GPIOB, 10, number[num][1]); //led b
+	GPIO_write(GPIOA, 7, number[num][2]); //led c
+	GPIO_write(GPIOA, 6, number[num][3]); //led d
+	GPIO_write(GPIOA, 5, number[num][4]); //led e
+	GPIO_write(GPIOA, 9, number[num][5]); //led f
+	GPIO_write(GPIOC, 7, number[num][6]); //led g
+	GPIO_write(GPIOB, 6, number[num][7]); //led g
+}
+```
 
-## Results
 
-Experiment images and results
 
-> Show experiment images /results
+# Results
 
-Add [demo video link](https://github.com/ykkimhgu/course-doc/blob/master/course/lab/link/README.md)
+video link : https://youtu.be/zCFLeOTo1D0
+
+
+
+# Conclusion
+
+​	Through this lab, I was able to learn the correct connection through understanding the 7-segment hardware. The 7-segment used this time is a common-anode type, and the LED becomes ON when the LOW input is input through the MCU, and the LED becomes OFF when the HIGH input is input. Based on this, when creating a code that controls the 7-segment, it was possible to create a much more efficient code using the 2D-arrary.
+
+
 
 # Reference
 
-Complete list of all references used (github, blog, paper, etc)
+Display Decoder. (n.d.). Electroncis Tutorials. https://www.electronics-tutorials.ws/combination/comb_6.html
 
 
 
 # Troubleshooting
 
-(Option) You can write Troubleshooting section
+​	When creating the code for the first time, the 'h' portion corresponding to the dp_led was completely excluded from the 2D-array. As a result, there was no problem, but when it was necessary to control the dp part, it was determined that it was necessary to add the dp part to be easily used by anyone and went through the process of revising it again. I looked back on the role of an engineer not only to think about the results in front of me, but also to consider various results.

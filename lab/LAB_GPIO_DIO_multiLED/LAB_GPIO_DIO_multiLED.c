@@ -15,8 +15,12 @@
 
 
 #define BUTTON_PIN 13
+#define LED_PIN_0 5 //PA5
+#define LED_PIN_1	6 //PA6
+#define LED_PIN_2 7 //PA7
+#define LED_PIN_3	6	//PB6
 
-
+void setup(void);
 
 
 int main(void) { 

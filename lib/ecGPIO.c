@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------\
 @ Embedded Controller by Young-Keun Kim - Handong Global University
-Author           : SSS LAB
+Author           : Seongjun Park
 Created          : 05-03-2021
 Modified         : 09-20-2022
 Language/ver     : C++ in Keil uVision
@@ -18,6 +18,18 @@ Description      : Distributed to Students for LAB_GPIO
 #define LED_PIN_2 7 //PA7
 #define LED_PIN_3	6	//PB6
 int ledPin[4][4] ={{1,0,0,0},{0,1,0,0},{0,0,1,0},{0,0,0,1}};
+int number[10][8]={                         //{a,b,c,d,e,f,g,h}
+                   {0,0,0,0,0,0,1,1},          //zero '0'
+                   {1,0,0,1,1,1,1,1},          //one '1'
+                   {0,0,1,0,0,1,0,1},          //two '2'
+                   {0,0,0,0,1,1,0,1},          //three '3'
+                   {1,0,0,1,1,0,0,1},          //four '4'
+                   {0,1,0,0,1,0,0,1},          //five '5'
+                   {0,1,0,0,0,0,0,1},          //six '6'
+                   {0,0,0,1,1,0,1,1},          //seven '7'
+                   {0,0,0,0,0,0,0,1},          //eight '8'
+                   {0,0,0,0,1,0,0,1},          //nine '9'
+                 };
 
 void GPIO_init(GPIO_TypeDef *Port, int pin, int mode){     
 	// mode  : Input(0), Output(1), AlterFunc(2), Analog(3)   
@@ -79,74 +91,6 @@ void GPIO_write(GPIO_TypeDef *Port, int pin, int Output){
 		Port->ODR |= (unsigned)Output <<pin;
 }
 
-void sevensegment_init(void){
-	GPIO_init(GPIOA, 8, OUTPUT); //a
-	GPIO_otype(GPIOA, 8, 0);
-	GPIO_pupd(GPIOA, 8, 0);
-	GPIO_ospeed(GPIOA, 8, 1);
-	
-	GPIO_init(GPIOB, 10, OUTPUT); //b
-	GPIO_otype(GPIOB, 10, 0);
-	GPIO_pupd(GPIOB, 10, 0);
-	GPIO_ospeed(GPIOB, 10, 1);
-	
-	GPIO_init(GPIOA, 7, OUTPUT); //c
-	GPIO_otype(GPIOA, 7, 0);
-	GPIO_pupd(GPIOA, 7, 0);
-	GPIO_ospeed(GPIOA, 7, 1);
-	
-	GPIO_init(GPIOA, 6, OUTPUT); //d
-	GPIO_otype(GPIOA, 6, 0);
-	GPIO_pupd(GPIOA, 6, 0);
-	GPIO_ospeed(GPIOA, 6, 1);
-	
-	GPIO_init(GPIOA, 5, OUTPUT); //e
-	GPIO_otype(GPIOA, 5, 0);
-	GPIO_pupd(GPIOA, 5, 0);
-	GPIO_ospeed(GPIOA, 5, 1);
-	
-	GPIO_init(GPIOA, 9, OUTPUT); //f
-	GPIO_otype(GPIOA, 9, 0);
-	GPIO_pupd(GPIOA, 9, 0);
-	GPIO_ospeed(GPIOA, 9, 1);
-	
-	GPIO_init(GPIOC, 7, OUTPUT); //g
-	GPIO_otype(GPIOC, 7, 0);
-	GPIO_pupd(GPIOC, 7, 0);
-	GPIO_ospeed(GPIOC, 7, 1);
-
-}
-
-
-void sevensegment_decode (uint8_t num){
-	int number[10][7]={                         //{a,b,c,d,e,f,g}
-                    {0,0,0,0,0,0,1},          //zero
-                    {1,0,0,1,1,1,1},          //one
-                    {0,0,1,0,0,1,0},          //two
-                    {0,0,0,0,1,1,0},          //three
-                    {1,0,0,1,1,0,0},          //four
-                    {0,1,0,0,1,0,0},          //five
-                    {0,1,0,0,0,0,0},          //six
-                    {0,0,0,1,1,0,1},          //seven
-                    {0,0,0,0,0,0,0},          //eight
-                    {0,0,0,0,1,0,0},          //nine
-                  };
-	GPIO_write(GPIOA, 8, number[num][0]); //a
-	GPIO_write(GPIOB, 10, number[num][1]); //b
-	GPIO_write(GPIOA, 7, number[num][2]); //c
-	GPIO_write(GPIOA, 6, number[num][3]); //d
-	GPIO_write(GPIOA, 5, number[num][4]); //e
-	GPIO_write(GPIOA, 9, number[num][5]); //f
-	GPIO_write(GPIOC, 7, number[num][6]); //g
-}
-
-void led_select(int _num){
-	GPIO_write(GPIOA, LED_PIN_0, ledPin[_num][0]);
-	GPIO_write(GPIOA, LED_PIN_1, ledPin[_num][1]);
-	GPIO_write(GPIOA, LED_PIN_2, ledPin[_num][2]);
-	GPIO_write(GPIOB, LED_PIN_3, ledPin[_num][3]);
-}
-
 void LED_Toggle(void){
 	if(GPIO_read(GPIOC, BUTTON_PIN) == LOW){
 		if(GPIO_read(GPIOA, LED_PIN) == LOW){
@@ -155,14 +99,64 @@ void LED_Toggle(void){
 		else{
 			GPIO_write(GPIOA, LED_PIN, LOW);
 		}
-	}
-	else{
-		if(GPIO_read(GPIOA, LED_PIN) == LOW){
-			GPIO_write(GPIOA, LED_PIN, LOW);
+	}	
+}
+
+void sevensegment_init(void){
+	for (int i = PIN_5; i< PIN_11 ; i++){ 
+		int gpioType = 0;
+		if (i == PIN_10){
+			gpioType = GPIOB;
 		}
 		else{
-			GPIO_write(GPIOA, LED_PIN, HIGH);
+			gpioType = GPIOA;
 		}
+	GPIO_init(gpioType, i, OUTPUT); // a, b, c, d, e, f
+	GPIO_otype(gpioType, i, EC_PP); // Push-Pull
+	GPIO_pupd(gpioType, i, EC_NON); // NO Pull-up-Pull-down
+	GPIO_ospeed(gpioType, i, EC_MS); // Medium speed
 	}
 	
+	GPIO_init(GPIOC, PIN_7, OUTPUT); //g
+	GPIO_otype(GPIOC, PIN_7, EC_PP); //Push-Pull
+	GPIO_pupd(GPIOC, PIN_7, EC_NON); // NO Pull-up-Pull-down
+	GPIO_ospeed(GPIOC, PIN_7, EC_MS); // Medium speed
+	
+	GPIO_init(GPIOB, PIN_6, OUTPUT); // h
+	GPIO_otype(GPIOB, PIN_6, EC_PP); //Push-Pull
+	GPIO_pupd(GPIOB, PIN_6, EC_NON); // NO Pull-up-Pull-down
+	GPIO_ospeed(GPIOB, PIN_6, EC_MS); // Medium speed
+}
+
+
+void sevensegment_decode (uint8_t num){
+//	int number[10][8]={                         //{a,b,c,d,e,f,g,h}
+//                    {0,0,0,0,0,0,1,1},          //zero '0'
+//                    {1,0,0,1,1,1,1,1},          //one '1'
+//                    {0,0,1,0,0,1,0,1},          //two '2'
+//                    {0,0,0,0,1,1,0,1},          //three '3'
+//                    {1,0,0,1,1,0,0,1},          //four '4'
+//                    {0,1,0,0,1,0,0,1},          //five '5'
+//                    {0,1,0,0,0,0,0,1},          //six '6'
+//                    {0,0,0,1,1,0,1,1},          //seven '7'
+//                    {0,0,0,0,0,0,0,1},          //eight '8'
+//                    {0,0,0,0,1,0,0,1},          //nine '9'
+//                  };
+	// LEDs for each of the 7-segment
+	GPIO_write(GPIOA, 8, number[num][0]); //a
+	GPIO_write(GPIOB, 10, number[num][1]); //b
+	GPIO_write(GPIOA, 7, number[num][2]); //c
+	GPIO_write(GPIOA, 6, number[num][3]); //d
+	GPIO_write(GPIOA, 5, number[num][4]); //e
+	GPIO_write(GPIOA, 9, number[num][5]); //f
+	GPIO_write(GPIOC, 7, number[num][6]); //g
+	GPIO_write(GPIOB, 6, number[num][7]); //g
+}
+
+	// led select for 7segment display('0'~'9')
+void led_select(int _num){
+	GPIO_write(GPIOA, LED_PIN_0, ledPin[_num][0]);
+	GPIO_write(GPIOA, LED_PIN_1, ledPin[_num][1]);
+	GPIO_write(GPIOA, LED_PIN_2, ledPin[_num][2]);
+	GPIO_write(GPIOB, LED_PIN_3, ledPin[_num][3]);
 }
