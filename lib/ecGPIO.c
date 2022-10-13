@@ -130,18 +130,6 @@ void sevensegment_init(void){
 
 
 void sevensegment_decode (uint8_t num){
-//	int number[10][8]={                         //{a,b,c,d,e,f,g,h}
-//                    {0,0,0,0,0,0,1,1},          //zero '0'
-//                    {1,0,0,1,1,1,1,1},          //one '1'
-//                    {0,0,1,0,0,1,0,1},          //two '2'
-//                    {0,0,0,0,1,1,0,1},          //three '3'
-//                    {1,0,0,1,1,0,0,1},          //four '4'
-//                    {0,1,0,0,1,0,0,1},          //five '5'
-//                    {0,1,0,0,0,0,0,1},          //six '6'
-//                    {0,0,0,1,1,0,1,1},          //seven '7'
-//                    {0,0,0,0,0,0,0,1},          //eight '8'
-//                    {0,0,0,0,1,0,0,1},          //nine '9'
-//                  };
 	// LEDs for each of the 7-segment
 	GPIO_write(GPIOA, 8, number[num][0]); //a
 	GPIO_write(GPIOB, 10, number[num][1]); //b

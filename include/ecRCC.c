@@ -1,3 +1,10 @@
+/*----------------------------------------------------------------\
+@ Embedded Controller by Young-Keun Kim - Handong Global University
+Author           : Seongjun Park
+Language/ver     : C++ in Keil uVision
+Description      : Distributed to Students for LAB_GPIO
+/----------------------------------------------------------------*/
+
 #include "stm32f4xx.h"
 #include "ecRCC.h"
 
@@ -45,7 +52,7 @@ void RCC_PLL_init() {
 	// Make PLL as 84 MHz
 	// f(VCO clock) = f(PLL clock input) * (PLLN / PLLM) = 16MHz * 84/8 = 168 MHz
 	// f(PLL_R) = f(VCO clock) / PLLP = 168MHz/2 = 84MHz
-	RCC->PLLCFGR = (RCC->PLLCFGR & ~RCC_PLLCFGR_PLLN) | 84U << 6;
+	RCC->PLLCFGR = (RCC->PLLCFGR & ~RCC_PLLCFGR_PLLN) | 84U << 6; //clear and set 
 	RCC->PLLCFGR = (RCC->PLLCFGR & ~RCC_PLLCFGR_PLLM) | 8U ; 
 	RCC->PLLCFGR &= ~RCC_PLLCFGR_PLLP;  // 00: PLLP = 2, 01: PLLP = 4, 10: PLLP = 6, 11: PLLP = 8	
 	
@@ -94,4 +101,20 @@ void RCC_GPIOC_enable()
 	RCC_HSI_init();
 	// RCC Peripheral Clock Enable Register 
 	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOCEN;
+}
+
+void RCC_GPIOD_enable()
+{
+	// HSI is used as system clock         
+	RCC_HSI_init();
+	// RCC Peripheral Clock Enable Register 
+	RCC->AHB1ENR |= RCC_AHB1ENR_GPIODEN;
+}
+
+void RCC_GPIOE_enable()
+{
+	// HSI is used as system clock         
+	RCC_HSI_init();
+	// RCC Peripheral Clock Enable Register 
+	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOEEN;
 }
