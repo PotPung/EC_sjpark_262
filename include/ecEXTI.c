@@ -14,21 +14,27 @@ void EXTI_init(GPIO_TypeDef* Port, int Pin, int trig_type, int priority) {
 	else if (Port == GPIOB) EXTICR_port = 1;
 	else if (Port == GPIOC) EXTICR_port = 2;
 	else if (Port == GPIOD) EXTICR_port = 3;
-	else 					EXTICR_port = 4;
-
-	SYSCFG->EXTICR[_______] &= ________________;			// clear 4 bits
-	SYSCFG->EXTICR[_______] |= ________________;			// set 4 bits
+	else 										EXTICR_port = 4;
+	
+	int EXTINUM;
+	if (Pin <4) EXTINUM = 0;
+	else if (Pin >= 4 && Pin < 8) EXTINUM = 1;
+	else if (Pin >= 8 && Pin < 12) EXTINUM = 2;
+	else if (Pin >= 12 && Pin < 16) EXTINUM = 3;
+	
+	SYSCFG->EXTICR[EXTINUM] &= 0000 << Pin%4 ;			// clear 4 bits
+	SYSCFG->EXTICR[EXTINUM] |= EXTICR_port << Pin%4 ;			// set 4 bits
 
 	// Configure Trigger edge
-	if (trig_type == FALL) EXTI->FTSR |= _______;   // Falling trigger enable 
-	else if (trig_type == RISE) EXTI->RTSR |= _______;   // Rising trigger enable 
+	if (trig_type == FALL) EXTI->FTSR |= 1<<Pin;   // Falling trigger enable 
+	else if (trig_type == RISE) EXTI->RTSR |= 1<<Pin;   // Rising trigger enable 
 	else if (trig_type == BOTH) {			// Both falling/rising trigger enable
-		EXTI->RTSR |= _______;
-		EXTI->FTSR |= _______;
+		EXTI->RTSR |= 1<<Pin;
+		EXTI->FTSR |= 1<<Pin;
 	}
 
 	// Configure Interrupt Mask (Interrupt enabled)
-	EXTI->IMR |= _______;     // not masked
+	EXTI->IMR |= 1<<Pin;     // not masked
 
 
 	// NVIC(IRQ) Setting
@@ -38,7 +44,7 @@ void EXTI_init(GPIO_TypeDef* Port, int Pin, int trig_type, int priority) {
 	else if (Pin < 10) 	EXTI_IRQn = _______;
 	else 			EXTI_IRQn = _______;
 
-	NVIC_SetPriority(EXTI_IRQn, _______);	// EXTI priority
+	NVIC_SetPriority(EXTI_IRQn,priority);	// EXTI priority
 	NVIC_EnableIRQ(EXTI_IRQn); 	// EXTI IRQ enable
 }
 

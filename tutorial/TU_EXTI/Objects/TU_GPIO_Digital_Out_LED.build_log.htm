@@ -1,0 +1,299 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: •ÏVision V5.37.0.0
+Copyright (C) 2022 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Seongjun Park, Handong Global University, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.37.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.18
+Assembler:       Armasm.exe V6.18
+Linker/Locator:  ArmLink.exe V6.18
+Library Manager: ArmAr.exe V6.18
+Hex Converter:   FromElf.exe V6.18
+CPU DLL:         SARMCM3.DLL V5.37.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      UL2CM3.DLL V1.164.7.0
+Dialog DLL:      TCM.DLL V1.56.1.0
+ 
+<h2>Project:</h2>
+C:\Users\user\source\repos\EC_sjpark_262\tutorial\TU_EXTI\TU_EXTI.uvprojx
+Project File Date:  10/13/2022
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.18', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Build target 'Target 1'
+assembling startup_stm32f411xe.s...
+TU_SysTick.c(8): warning: no previous extern declaration for non-static variable 'msTick' [-Wmissing-variable-declarations]
+volatile uint32_t msTick = 0;
+                  ^
+TU_SysTick.c(8): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+volatile uint32_t msTick = 0;
+         ^
+TU_SysTick.c(48): error: use of undeclared identifier 'msTicks'; did you mean 'msTick'?
+                curTicks = msTicks;
+                           ^~~~~~~
+                           msTick
+TU_SysTick.c(8): note: 'msTick' declared here
+volatile uint32_t msTick = 0;
+                  ^
+TU_SysTick.c(49): error: use of undeclared identifier 'msTicks'; did you mean 'msTick'?
+                while ((msTicks - curTicks) < 1000);    
+                        ^~~~~~~
+                        msTick
+TU_SysTick.c(8): note: 'msTick' declared here
+volatile uint32_t msTick = 0;
+                  ^
+TU_SysTick.c(50): error: use of undeclared identifier 'msTicks'; did you mean 'msTick'?
+                msTicks = 0;
+                ^~~~~~~
+                msTick
+TU_SysTick.c(8): note: 'msTick' declared here
+volatile uint32_t msTick = 0;
+                  ^
+TU_SysTick.c(51): warning: implicit declaration of function 'LED_toggle' is invalid in C99 [-Wimplicit-function-declaration]
+                LED_toggle();
+                ^
+TU_SysTick.c(57): error: use of undeclared identifier 'msTicks'; did you mean 'msTick'?
+        msTicks++;
+        ^~~~~~~
+        msTick
+TU_SysTick.c(8): note: 'msTick' declared here
+volatile uint32_t msTick = 0;
+                  ^
+TU_SysTick.c(56): warning: no previous prototype for function 'SysTick_Handler' [-Wmissing-prototypes]
+void SysTick_Handler(void){
+     ^
+TU_SysTick.c(56): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void SysTick_Handler(void){
+^
+static 
+TU_SysTick.c(9): warning: no previous extern declaration for non-static variable 'curTicks' [-Wmissing-variable-declarations]
+volatile uint32_t curTicks;
+                  ^
+TU_SysTick.c(9): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+volatile uint32_t curTicks;
+         ^
+4 warnings and 4 errors generated.
+compiling TU_SysTick.c...
+../../include/ecEXTI.c(2): warning: In file included from...
+../../lib\ecSysTick.h(14): warning: this function declaration is not a prototype [-Wstrict-prototypes]
+void SysTick_counter();
+                    ^
+                     void
+../../lib\ecSysTick.h(23): warning: no newline at end of file [-Wnewline-eof]
+#endif
+      ^
+../../include/ecEXTI.c(3): warning: In file included from...
+../../include/ecEXTI.h(39): warning: no newline at end of file [-Wnewline-eof]
+#endif
+      ^
+../../include/ecEXTI.c(19): error: use of undeclared identifier '_______'
+        SYSCFG->EXTICR[_______] &= ________________;                    // clear 4 bits
+                       ^
+../../include/ecEXTI.c(19): error: use of undeclared identifier '________________'
+        SYSCFG->EXTICR[_______] &= ________________;                    // clear 4 bits
+                                   ^
+../../include/ecEXTI.c(20): error: use of undeclared identifier '_______'
+        SYSCFG->EXTICR[_______] |= ________________;                    // set 4 bits
+                       ^
+../../include/ecEXTI.c(20): error: use of undeclared identifier '________________'
+        SYSCFG->EXTICR[_______] |= ________________;                    // set 4 bits
+                                   ^
+../../include/ecEXTI.c(23): error: use of undeclared identifier '_______'
+        if (trig_type == FALL) EXTI->FTSR |= _______;   // Falling trigger enable 
+                                             ^
+../../include/ecEXTI.c(24): error: use of undeclared identifier '_______'
+        else if (trig_type == RISE) EXTI->RTSR |= _______;   // Rising trigger enable 
+                                                  ^
+../../include/ecEXTI.c(26): error: use of undeclared identifier '_______'
+                EXTI->RTSR |= _______;
+                              ^
+../../include/ecEXTI.c(27): error: use of undeclared identifier '_______'
+                EXTI->FTSR |= _______;
+                              ^
+../../include/ecEXTI.c(31): error: use of undeclared identifier '_______'
+        EXTI->IMR |= _______;     // not masked
+                     ^
+../../include/ecEXTI.c(37): error: use of undeclared identifier '_______'
+        if (Pin < 5)    EXTI_IRQn = _______;
+                                    ^
+../../include/ecEXTI.c(38): error: use of undeclared identifier '_______'
+        else if (Pin < 10)      EXTI_IRQn = _______;
+                                            ^
+../../include/ecEXTI.c(39): error: use of undeclared identifier '_______'
+        else                    EXTI_IRQn = _______;
+                                            ^
+../../include/ecEXTI.c(41): error: use of undeclared identifier '_______'
+        NVIC_SetPriority(EXTI_IRQn, _______);   // EXTI priority
+                                    ^
+../../include/ecEXTI.c(12): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+        int EXTICR_port;
+            ^
+../../include/ecEXTI.c(6): warning: unused parameter 'priority' [-Wunused-parameter]
+void EXTI_init(GPIO_TypeDef* Port, int Pin, int trig_type, int priority) {
+                                                               ^
+../../include/ecEXTI.c(6): warning: no previous prototype for function 'EXTI_init' [-Wmissing-prototypes]
+void EXTI_init(GPIO_TypeDef* Port, int Pin, int trig_type, int priority) {
+     ^
+../../include/ecEXTI.c(6): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void EXTI_init(GPIO_TypeDef* Port, int Pin, int trig_type, int priority) {
+^
+static 
+../../include/ecEXTI.c(47): error: expected ';' after expression
+        EXTI->IMR __ = _______;     // not masked (i.e., Interrupt enabled)
+                 ^
+                 ;
+../../include/ecEXTI.c(47): error: use of undeclared identifier '__'
+        EXTI->IMR __ = _______;     // not masked (i.e., Interrupt enabled)
+                  ^
+../../include/ecEXTI.c(47): error: use of undeclared identifier '_______'
+        EXTI->IMR __ = _______;     // not masked (i.e., Interrupt enabled)
+                       ^
+../../include/ecEXTI.c(46): warning: unused parameter 'pin' [-Wunused-parameter]
+void EXTI_enable(uint32_t pin) {
+                          ^
+../../include/ecEXTI.c(46): warning: no previous prototype for function 'EXTI_enable' [-Wmissing-prototypes]
+void EXTI_enable(uint32_t pin) {
+     ^
+../../include/ecEXTI.c(46): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void EXTI_enable(uint32_t pin) {
+^
+static 
+../../include/ecEXTI.c(50): error: expected ';' after expression
+        EXTI->IMR __ = _______;     // masked (i.e., Interrupt disabled)
+                 ^
+                 ;
+../../include/ecEXTI.c(50): error: use of undeclared identifier '__'
+        EXTI->IMR __ = _______;     // masked (i.e., Interrupt disabled)
+                  ^
+../../include/ecEXTI.c(50): error: use of undeclared identifier '_______'
+        EXTI->IMR __ = _______;     // masked (i.e., Interrupt disabled)
+                       ^
+../../include/ecEXTI.c(49): warning: unused parameter 'pin' [-Wunused-parameter]
+void EXTI_disable(uint32_t pin) {
+                           ^
+../../include/ecEXTI.c(49): warning: no previous prototype for function 'EXTI_disable' [-Wmissing-prototypes]
+void EXTI_disable(uint32_t pin) {
+     ^
+../../include/ecEXTI.c(49): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void EXTI_disable(uint32_t pin) {
+^
+static 
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+10 warnings and 20 errors generated.
+compiling ecEXTI.c...
+compiling system_stm32f4xx.c...
+../../include/ecGPIO.c(20): warning: no previous extern declaration for non-static variable 'ledPin' [-Wmissing-variable-declarations]
+int ledPin[4][4] ={{1,0,0,0},{0,1,0,0},{0,0,1,0},{0,0,0,1}};
+    ^
+../../include/ecGPIO.c(20): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+int ledPin[4][4] ={{1,0,0,0},{0,1,0,0},{0,0,1,0},{0,0,0,1}};
+^
+../../include/ecGPIO.c(21): warning: no previous extern declaration for non-static variable 'number' [-Wmissing-variable-declarations]
+int number[10][8]={                         //{a,b,c,d,e,f,g,h}
+    ^
+../../include/ecGPIO.c(21): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+int number[10][8]={                         //{a,b,c,d,e,f,g,h}
+^
+../../include/ecGPIO.c(109): warning: incompatible pointer to integer conversion assigning to 'int' from 'GPIO_TypeDef *' [-Wint-conversion]
+                        gpioType = GPIOB;
+                                 ^ ~~~~~
+../../include/ecGPIO.c(112): warning: incompatible pointer to integer conversion assigning to 'int' from 'GPIO_TypeDef *' [-Wint-conversion]
+                        gpioType = GPIOA;
+                                 ^ ~~~~~
+../../include/ecGPIO.c(114): warning: incompatible integer to pointer conversion passing 'int' to parameter of type 'GPIO_TypeDef *' [-Wint-conversion]
+        GPIO_init(gpioType, i, OUTPUT); // a, b, c, d, e, f
+                  ^~~~~~~~
+../../include/ecGPIO.c(34): note: passing argument to parameter 'Port' here
+void GPIO_init(GPIO_TypeDef *Port, int pin, int mode){     
+                             ^
+../../include/ecGPIO.c(115): warning: incompatible integer to pointer conversion passing 'int' to parameter of type 'GPIO_TypeDef *' [-Wint-conversion]
+        GPIO_otype(gpioType, i, EC_PP); // Push-Pull
+                   ^~~~~~~~
+../../include/ecGPIO.c(72): note: passing argument to parameter 'Port' here
+void GPIO_otype(GPIO_TypeDef *Port, int pin, int type){
+                              ^
+../../include/ecGPIO.c(116): warning: incompatible integer to pointer conversion passing 'int' to parameter of type 'GPIO_TypeDef *' [-Wint-conversion]
+        GPIO_pupd(gpioType, i, EC_NON); // NO Pull-up-Pull-down
+                  ^~~~~~~~
+../../include/ecGPIO.c(78): note: passing argument to parameter 'Port' here
+void GPIO_pupd(GPIO_TypeDef *Port, int pin, int pupd){
+                             ^
+../../include/ecGPIO.c(117): warning: incompatible integer to pointer conversion passing 'int' to parameter of type 'GPIO_TypeDef *' [-Wint-conversion]
+        GPIO_ospeed(gpioType, i, EC_MS); // Medium speed
+                    ^~~~~~~~
+../../include/ecGPIO.c(66): note: passing argument to parameter 'Port' here
+void GPIO_ospeed(GPIO_TypeDef *Port, int pin, int speed){
+                               ^
+8 warnings generated.
+compiling ecGPIO.c...
+../../lib/ecRCC.c(11): warning: no previous extern declaration for non-static variable 'EC_SYSCLK' [-Wmissing-variable-declarations]
+volatile int EC_SYSCLK=16000000;
+             ^
+../../lib/ecRCC.c(11): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+volatile int EC_SYSCLK=16000000;
+         ^
+../../lib/ecRCC.c(20): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+        while ( (RCC->CR & 0x00000002U) == 0 ) {;}
+                                                ^
+../../lib/ecRCC.c(120): warning: no newline at end of file [-Wnewline-eof]
+}
+ ^
+3 warnings generated.
+compiling ecRCC.c...
+TU_EXTI.c(56): warning: implicit declaration of function 'LED_toggle' is invalid in C99 [-Wimplicit-function-declaration]
+                LED_toggle();
+                ^
+TU_EXTI.c(54): warning: no previous prototype for function 'EXTI15_10_IRQHandler' [-Wmissing-prototypes]
+void EXTI15_10_IRQHandler(void) {
+     ^
+TU_EXTI.c(54): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void EXTI15_10_IRQHandler(void) {
+^
+static 
+TU_EXTI.c(70): warning: no newline at end of file [-Wnewline-eof]
+}
+ ^
+3 warnings generated.
+compiling TU_EXTI.c...
+".\Objects\TU_GPIO_Digital_Out_LED.axf" - 23 Error(s), 28 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.9.0.pack
+                ARM.CMSIS.5.9.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.6.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F4xx_DFP.2.16.0.pack
+                Keil.STM32F4xx_DFP.2.16.0
+                STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
+   * Component: Startup Version: 2.6.3
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/_Target_1
+  C:/Users/user/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include
+  C:/Users/user/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.6.0
+
+   * Component: Keil::Device:Startup:2.6.3
+      Source file:   MDK/Device/Source/ARM/STM32F4xx_OTP.s
+      Include file:  Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
+      Source file:   MDK/Device/Source/ARM/STM32F411xx_OPT.s
+      Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/arm/startup_stm32f411xe.s
+      Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c
+Target not created.
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>

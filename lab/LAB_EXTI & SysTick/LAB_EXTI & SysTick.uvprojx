@@ -49,7 +49,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\Objects\</OutputDirectory>
-          <OutputName>TU_GPIO_Digital_Out_LED</OutputName>
+          <OutputName>LAB_GPIO_DIO_LED</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -134,11 +134,11 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>4096</DriverSelection>
+            <DriverSelection>-1</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3>"" ()</Flash3>
+          <Flash3></Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -385,9 +385,9 @@
           <GroupName>Source Group 1</GroupName>
           <Files>
             <File>
-              <FileName>TU_Timer_Interrupt.c</FileName>
+              <FileName>LAB_EXTI &amp; SysTick.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\TU_Timer_Interrupt.c</FilePath>
+              <FilePath>.\LAB_EXTI &amp; SysTick.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -397,22 +397,22 @@
             <File>
               <FileName>ecGPIO.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\include\ecGPIO.c</FilePath>
+              <FilePath>..\..\lib\ecGPIO.c</FilePath>
             </File>
             <File>
               <FileName>ecGPIO.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\include\ecGPIO.h</FilePath>
-            </File>
-            <File>
-              <FileName>ecRCC.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\include\ecRCC.c</FilePath>
+              <FilePath>..\..\lib\ecGPIO.h</FilePath>
             </File>
             <File>
               <FileName>ecRCC.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\include\ecRCC.h</FilePath>
+              <FilePath>..\..\lib\ecRCC.h</FilePath>
+            </File>
+            <File>
+              <FileName>ecRCC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\lib\ecRCC.c</FilePath>
             </File>
           </Files>
         </Group>

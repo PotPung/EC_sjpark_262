@@ -3,7 +3,7 @@
  * Auto generated Run-Time-Environment Configuration File
  *      *** Do not modify ! ***
  *
- * Project: 'TU_GPIO_Digital_Out_LED' 
+ * Project: 'TU_Timer_Interrupt' 
  * Target:  'Target 1' 
  */
 

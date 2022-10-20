@@ -385,9 +385,14 @@
           <GroupName>Source Group 1</GroupName>
           <Files>
             <File>
-              <FileName>TU_GPIO_Digital_Out_LED_student.c</FileName>
+              <FileName>TU_EXTI.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\TU_GPIO_Digital_Out_LED_student.c</FilePath>
+              <FilePath>.\TU_EXTI.c</FilePath>
+            </File>
+            <File>
+              <FileName>TU_SysTick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\TU_SysTick.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -403,6 +408,26 @@
               <FileName>ecRCC.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\lib\ecRCC.h</FilePath>
+            </File>
+            <File>
+              <FileName>ecEXTI.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\include\ecEXTI.c</FilePath>
+            </File>
+            <File>
+              <FileName>ecEXTI.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\include\ecEXTI.h</FilePath>
+            </File>
+            <File>
+              <FileName>ecGPIO.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\include\ecGPIO.c</FilePath>
+            </File>
+            <File>
+              <FileName>ecGPIO.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\include\ecGPIO.h</FilePath>
             </File>
           </Files>
         </Group>
